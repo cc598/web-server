@@ -5,56 +5,36 @@ HOST: http://agenda12.apiblueprint.org/
 
 Agenda is a simple API allowing consumers to schedule meeting on-line
 
+
+
 # Group User
-
-Resource operations related to a user in the API.
-
-## User-Key [/v1/user/getkey{?username,password}]
-
-+ Parameters
-    - username : `root` (string, required) - User Name
-    - password : `pass` (required)
-
-### Get User Key [GET]
-
-get a security key for operations later
-
-+ Response 200 (application/json)
-
-        {
-            "key":"1e3576bt"
-            "permissions":["user","admin"]
-        }
-
-
-# Group Users
 
 Resources related to a users in the API.
 
-## Users Collection [/v1/users{?key}]
+## Users [/v1/users{?key}]
 
 + Parameters
     - key : `1e3576bt` (string, required)
 
-### List all Users [GET]
+### Get all Users [GET]
 
 + Response 200 (application/json)
 
         [
             {
-                "id":1
                 "username":"zhang3"
                 "password":"zhang"
                 "email":"zhang3@mail2.sysu.edu.cn"
+                "phone":"123123"
             },{
-                "id":2
                 "username":"li4"
                 "password":"li"
                 "email":"li4@mail2.sysu.edu.cn"
+                "phone":"456456"
             }
         ]
 
-### Create a New User [POST]
+### Resigter a New User [POST]
 
 + Request (application/json)
 
@@ -62,6 +42,7 @@ Resources related to a users in the API.
             "username":"zhang3"
             "password":"zhang"
             "email":"zhang3@mail2.sysu.edu.cn"
+            "phone":"123123"
         }
 
 + Response 201 (application/json)
@@ -73,24 +54,41 @@ Resources related to a users in the API.
     + Body
 
             {
-                "id": 1
                 "username":"zhang3"
                 "password":"zhang"
                 "email":"zhang3@mail2.sysu.edu.cn"
+                "phone":"123123"
             }
-
-### Get User by ID [GET /v1/users/{id}]
+            
+### Delete User [DELETE /v1/users/{username}]
 
 + Parameters
-    - id : `1` (int, required) - User Name
+    - username : `root` (string, required) - User Name
+    
++ Response 200 (application/json)
+
+        {
+                "username":"zhang3"
+                "password":"zhang"
+                "email":"zhang3@mail2.sysu.edu.cn"
+                "phone":"123123"
+        }
+            
+
+## Login [/v1/user/login{?username,password}]
+
++ Parameters
+    - username : `root` (string, required) - User Name
+    - password : `pass` (required)
+    
+### Verify Login [GET]
 
 + Response 200 (application/json)
 
         {
-            "id" : 1
-            "username":"zhang3"
-            "password":"zhang"
-            "email":"zhang3@mail2.sysu.edu.cn"
+            "result": 1
         }
+        
+
 
 # Group Meetings
