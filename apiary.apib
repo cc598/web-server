@@ -11,7 +11,7 @@ Agenda is a simple API allowing consumers to schedule meeting on-line
 
 Resources related to a users in the API.
 
-## Users [/v1/users{?key}]
+## Users [/v1/user/users{?key}]
 
 + Parameters
     - key : `1e3576bt` (string, required)
@@ -49,7 +49,7 @@ Resources related to a users in the API.
 
     + Headers
 
-            Location: /users/1
+            Location: /user/users/zhang3
 
     + Body
 
@@ -60,19 +60,12 @@ Resources related to a users in the API.
                 "phone":"123123"
             }
             
-### Delete User [DELETE /v1/users/{username}]
+### Delete User [DELETE /v1/user/users/{username}]
 
 + Parameters
     - username : `root` (string, required) - User Name
     
-+ Response 200 (application/json)
-
-        {
-                "username":"zhang3"
-                "password":"zhang"
-                "email":"zhang3@mail2.sysu.edu.cn"
-                "phone":"123123"
-        }
++ Response 204
             
 
 ## Login [/v1/user/login{?username,password}]
@@ -92,3 +85,32 @@ Resources related to a users in the API.
 
 
 # Group Meetings
+
+## New Meeting [/v1/meeting/NewMeeting]
+
+### Create Meeting [POST]
+
+
++ Request (application/json)
+
+        {
+            "title":"yup"
+            "participants":"zhang"
+            "start_time":"1111"
+            "end_time":"22222"
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /meeting/NewMeeting/yup
+
+    + Body
+
+            {
+            "title":"yup"
+            "participants":"zhang"
+            "start_time":"1111"
+            "end_time":"22222"
+            }
