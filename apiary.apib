@@ -128,7 +128,7 @@ Resources related to a users in the API.
     + Body
     
             {
-            
+                "Name": "admin"
             }
         
         
@@ -140,9 +140,12 @@ Resources related to a users in the API.
 
 ### deleteHandler [DELETE]
 
-+ Response 204
++ Response 204 (application/json)
 
-+ Response 401
+        {
+            "msg": "success"
+        }
+
         
         
         
