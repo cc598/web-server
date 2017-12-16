@@ -53,6 +53,13 @@ Resources related to a users in the API.
 
     + Body
     
+            {
+                "Name": "Tom"
+                "Passwd": "123456"
+                "Email": "agendaserver@222.com"
+                "Tel": "0987654321"
+            }
+    
 + Response 400 (application/json)
 
         {
@@ -82,12 +89,6 @@ Resources related to a users in the API.
             "username": "admin"
         }
         
-+ Response 401 (application/json)
-
-        {
-
-        }
-        
     
 ### loginHandler [POST]
 
@@ -102,12 +103,6 @@ Resources related to a users in the API.
 
         {
             "msg": "Logged in successfully"
-        }
-
-+ Response 401 (application/json)
-
-        {
-            "msg": "already logged"
         }
         
         
