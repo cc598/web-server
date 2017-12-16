@@ -16,71 +16,155 @@ Resources related to a users in the API.
 + Parameters
     - key : `1e3576bt` (string, required)
 
-### Get all Users [GET]
+### listAllHandler [GET]
 
 + Response 200 (application/json)
 
         [
             {
-                "username":"zhang3"
-                "password":"zhang"
-                "email":"zhang3@mail2.sysu.edu.cn"
-                "phone":"123123"
+                "ld": "1"
+                "Name": "agenda"
+                "Passwd": "123456"
+                "Email": "agendaserver@111.com"
+                "Tel": "123456789"
             },{
-                "username":"li4"
-                "password":"li"
-                "email":"li4@mail2.sysu.edu.cn"
-                "phone":"456456"
+                "ld": "1"
+                "Name": "Tom"
+                "Passwd": "123456"
+                "Email": "agendaserver@222.com"
+                "Tel": "0987654321"
             }
         ]
 
-### Resigter a New User [POST]
+### resigterHandler [POST]
 
 + Request (application/json)
 
         {
-            "username":"zhang3"
-            "password":"zhang"
-            "email":"zhang3@mail2.sysu.edu.cn"
-            "phone":"123123"
+            "Name": "Tom"
+            "Passwd": "123456"
+            "Email": "agendaserver@222.com"
+            "Tel": "0987654321"
         }
 
 + Response 201 (application/json)
 
     + Headers
 
-            Location: /user/users/zhang3
+            Location: /users
 
     + Body
+    
++ Response 400 (application/json)
 
-            {
-                "username":"zhang3"
-                "password":"zhang"
-                "email":"zhang3@mail2.sysu.edu.cn"
-                "phone":"123123"
-            }
+        {
+            "msg": "username has been used"
+        }
+    
+
             
-### Delete User [DELETE /v1/user/users/{username}]
+            
+            
+            
+            
+            
+            
+        
+## Login [/v1/user/login{?key}]
 
 + Parameters
-    - username : `root` (string, required) - User Name
-    
-+ Response 204
-            
+    - key : `1e3576bt` (string, required)
 
-## Login [/v1/user/login{?username,password}]
+    
+### isLoginHandler [GET /v1/user/login/{username}]
 
 + Parameters
-    - username : `root` (string, required) - User Name
-    - password : `pass` (required)
-    
-### Verify Login [GET]
+    - username : `admin` (string, required)
 
 + Response 200 (application/json)
 
         {
-            "result": 1
+            "username": "admin"
         }
+        
++ Response 401 (application/json)
+
+        {
+
+        }
+        
+    
+### loginHandler [POST]
+
++ Request (application/json)
+
+        {
+            "Name": "admin"
+            "Passwd": "agenda"
+        }
+
++ Response 200 (application/json)
+
+        {
+            "msg": "Logged in successfully"
+        }
+
++ Response 401 (application/json)
+
+        {
+            "msg": "already logged"
+        }
+        
+        
+    
+    
+    
+    
+    
+    
+    
+    
+## Logout [/v1/user/logout]
+        
+### logoutHandler [POST]
+
++ Request (application/json)
+
+        {
+            "Name": "admin"
+        }
+        
++ Response 201  (application/json)
+
+    + Headers
+        
+            Location: /logout
+        
+    + Body
+    
+            {
+            
+            }
+        
+        
+        
+
+
+
+## Self [/v1/user/self]
+
+### deleteHandler [DELETE]
+
++ Response 204
+
++ Response 401
+        
+        
+        
+        
+        
+        
+        
         
 
 
